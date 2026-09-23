@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TARUN ~ARMY #1</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 25%,rgba(255,190,40,.14),transparent 28%),
+    radial-gradient(circle at 15% 85%,rgba(255,150,0,.08),transparent 30%),
+    #050505;
+  color:#fff;
+}
+
+/* Ambient glow */
+.bg-glow{
+  position:fixed;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  background:rgba(255,174,0,.10);
+  filter:blur(90px);
+  pointer-events:none;
+  animation:glowMove 7s ease-in-out infinite alternate;
+}
+
+@keyframes glowMove{
+  from{transform:translate(-70px,-30px) scale(.9)}
+  to{transform:translate(70px,40px) scale(1.15)}
+}
+
+/* Floating particles */
+.particle{
+  position:fixed;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#ffd66b;
+  opacity:.45;
+  animation:particleMove linear infinite;
+}
+
+.p1{left:12%;top:20%;animation-duration:6s}
+.p2{left:82%;top:30%;animation-duration:8s}
+.p3{left:25%;top:75%;animation-duration:7s}
+.p4{left:72%;top:80%;animation-duration:9s}
+.p5{left:50%;top:12%;animation-duration:5s}
+
+@keyframes particleMove{
+  0%{transform:translateY(20px);opacity:0}
+  30%{opacity:.5}
+  70%{opacity:.5}
+  100%{transform:translateY(-80px);opacity:0}
+}
+
+.container{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card{
+  width:100%;
+  padding:34px 22px 24px;
+  text-align:center;
+  border-radius:28px;
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.015)
+    );
+
+  border:1px solid rgba(255,190,50,.20);
+
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.65),
+    0 0 50px rgba(255,170,0,.06);
+
+  backdrop-filter:blur(18px);
+}
+
+/* Top shine */
+.card:before{
+  content:"";
+  position:absolute;
+  left:-40%;
+  top:0;
+  width:180%;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,210,100,.8),
+    transparent
+  );
+  animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+  from{transform:translateX(-40%)}
+  to{transform:translateX(40%)}
+}
+
+/* Profile */
+.profile{
+  width:138px;
+  height:138px;
+  margin:0 auto 23px;
+  padding:4px;
+  border-radius:50%;
+
+  background:linear-gradient(
+    135deg,
+    #fff0a6,
+    #c88900,
+    #fff1a8,
+    #9b6500
+  );
+
+  box-shadow:
+    0 0 20px rgba(255,190,40,.25),
+    0 0 55px rgba(255,170,0,.12);
+
+  animation:float 4s ease-in-out infinite;
+}
+
+.profile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:50%;
+  border:4px solid #090909;
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0) rotate(0deg);
+  }
+  50%{
+    transform:translateY(-9px) rotate(.5deg);
+  }
+}
+
+/* Headline */
+h1{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:.5px;
+  margin-bottom:10px;
+
+  background:linear-gradient(
+    90deg,
+    #fff,
+    #ffd76b,
+    #fff
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+
+  background-size:200% auto;
+  animation:textShine 4s linear infinite;
+}
+
+@keyframes textShine{
+  to{
+    background-position:200% center;
+  }
+}
+
+.subtitle{
+  color:#a7a7a7;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:24px;
+}
+
+/* Button */
+.join-btn{
+  width:100%;
+  min-height:57px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  text-decoration:none;
+  color:#111;
+
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:.4px;
+
+  border-radius:15px;
+
+  background:linear-gradient(
+    135deg,
+    #fff0a3,
+    #e8a900,
+    #ffd866
+  );
+
+  box-shadow:
+    0 10px 35px rgba(226,161,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.7);
+
+  animation:buttonPulse 2.4s ease-in-out infinite;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.join-btn:hover{
+  transform:translateY(-3px) scale(1.015);
+
+  box-shadow:
+    0 15px 45px rgba(226,161,0,.40),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.join-btn:active{
+  transform:scale(.97);
+}
+
+@keyframes buttonPulse{
+  0%,100%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.025);
+  }
+}
+
+.telegram-icon{
+  width:21px;
+  height:21px;
+  fill:currentColor;
+}
+
+/* Status */
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+
+  margin-top:18px;
+  padding:7px 13px;
+
+  border-radius:50px;
+
+  color:#aaa;
+  font-size:11px;
+
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.status-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#28d46b;
+  box-shadow:0 0 12px rgba(40,212,107,.8);
+  animation:statusBlink 1.7s infinite;
+}
+
+@keyframes statusBlink{
+  0%,100%{opacity:1}
+  50%{opacity:.35}
+}
+
+.note{
+  margin-top:15px;
+  color:#676767;
+  font-size:11px;
+}
+
+.footer{
+  margin-top:22px;
+  padding-top:15px;
+
+  border-top:1px solid rgba(255,255,255,.06);
+
+  color:#555;
+  font-size:9px;
+  letter-spacing:1.5px;
+}
+
+/* Mobile */
+@media(max-width:380px){
+
+  .container{
+    padding:12px;
+  }
+
+  .card{
+    padding:28px 17px 20px;
+    border-radius:24px;
+  }
+
+  .profile{
+    width:115px;
+    height:115px;
+  }
+
+  h1{
+    font-size:24px;
+  }
+
+  .subtitle{
+    font-size:12px;
+  }
+
+  .join-btn{
+    min-height:53px;
+    font-size:14px;
+  }
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1089619830383055');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1089619830383055&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+
+<body>
+
+<div class="bg-glow"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="profile">
+      <img
+        src="https://d1yei2z3i6k35z.cloudfront.net/9021055/6aaf754e112503.37454495_7176.jpg"
+        alt="KAAL ARMY"
+      >
+    </div>
+
+    <h1>KAAL ~ARMY #1</h1>
+
+    <p class="subtitle">
+      Join our official Telegram community and stay connected with KAAL ~ARMY.
+    </p>
+
+    <a
+      class="join-btn"
+      href="https://t.me/+-L8KgHARNCU1NGE9"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+
+      <svg
+        class="telegram-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M21.5 3.5 18.2 20c-.25 1.17-.9 1.46-1.83.91l-5.05-3.72-2.44 2.35c-.27.27-.5.5-1.02.5l.36-5.14 9.36-8.45c.41-.36-.09-.56-.64-.2L5.37 13.37.38 11.8c-1.09-.34-1.11-1.09.23-1.61L20.1 2.66c.9-.33 1.68.22 1.4.84Z"/>
+      </svg>
+
+      JOIN TELEGRAM CHANNEL
+    </a>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      Community Active
+    </div>
+
+    <div class="note">
+      Tap the button above to join
+    </div>
+
+    <div class="footer">
+      KAAL ~ARMY #1
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
